@@ -29,11 +29,7 @@ public class ComputerKit {
     }
 
     private double precoTotal() {
-        double res = 0;
-        for(ComputerPart item:lista){
-            res+=item.getPreco();
-        }
-        return res;
+        return lista.stream().mapToDouble(p -> p.getPreco()).sum();
     }
 
     public boolean contains(String item) {
@@ -41,12 +37,6 @@ public class ComputerKit {
     }
 
     public int count(String item) {
-        int res = 0;
-        for(ComputerPart item$:lista){
-            if(item$.getNome() == item){
-                res++;
-            }
-        }
-        return res;
+        return  (int)lista.stream().filter(p -> p.getNome() == item).count();
     }
 }
